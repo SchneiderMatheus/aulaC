@@ -23,18 +23,42 @@ int main()
     int reveladas [3][3] ={ {'0','0','0'},
                          {'0','0','0'},
                          {'0','0','0'}};
+
     
-    int seAcabou [3][3] ={ {'1','1','1'},
-                         {'1','1','1'},
-                         {'1','1','1'}};
+    bool jogoEncerrou =  true;
+    int linha, coluna;
+    char escolha;
     
-    bool jogoEmpatou =  false;
+    cout << "---> JOGO DA VELHA <---" << endl;
     
-    if (reveladas == seAcabou) {
-        jogoEmpatou == true;
+    for (int i =0; i<9; i++){
+    cout << "\nSelecione a sua jogada: (linha e coluna) "<< endl;
+    cin >> linha >> coluna;
+    cout << "Coordenadas: " <<linha <<"x" << coluna << endl;
+    cout << "Escolha X ou O: ";
+    cin >> escolha;
+    matriz[linha - 1][coluna - 1] = escolha;
+    reveladas[linha - 1][coluna - 1] = 1;
+    
+      for (int i =0; i<3; i++){
+        cout << "\n";
+            for (int j=0; j<3; j++){
+                cout << "|" << matriz [i][j]<< "|";
+            }
     }
-    if (jogoEmpatou){
-        cout << "Empate Total" << endl;
+    
+    for (int i =0; i<3; i++){
+        for (int j =0; j <3; j ++){
+            if(reveladas[i][j] == 0) {
+                jogoEncerrou == false;
+            }
+        }
+    }
+    
+    }
+        
+    
+        cout << "\nAcabou o jogo" << endl;
         for (int i =0; i<3; i++){
         cout << "\n";
             for (int j=0; j<3; j++){
@@ -42,16 +66,18 @@ int main()
             }
         }
         exit(EXIT_SUCCESS);
-    }
     
     
     
-    for (int i =0; i<3; i++){
+    
+    
+    
+    /*for (int i =0; i<3; i++){
         cout << "\n";
             for (int j=0; j<3; j++){
                 cout << "|" << matriz [i][j]<< "|";
             }
-        }
+    }*/
            
     
     
@@ -70,8 +96,10 @@ int main()
                 cout << " " << matriz [i][j];
             }
         }
+        
+        
+        
            */
-    
     
 
     return 0;
