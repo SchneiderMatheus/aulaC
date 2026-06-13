@@ -25,53 +25,87 @@ int main()
                          {0,0,0}};
 
     
-    bool jogoEncerrou =  true;
+    
+    bool venceu = false;
     int linha, coluna;
-    char escolha;
+    int jogadas =0;
+    char jogadorAtual= 'X';
     
     cout << "---> JOGO DA VELHA <---" << endl;
     
-    for (int i =0; i<9; i++){
+    while (!venceu && jogadas<9){
     cout << "\nSelecione a sua jogada: (linha e coluna) "<< endl;
     cin >> linha >> coluna;
+    if(matriz[linha - 1][coluna - 1] != ' ') {
+        cout<< "Essa casa ja foi jogada, escolha outra!" << endl;
+        continue;
+    }
     cout << "Coordenadas: " <<linha <<"x" << coluna << endl;
-    cout << "Escolha X ou O: ";
-    cin >> escolha;
-    escolha = toupper(escolha);
-    matriz[linha - 1][coluna - 1] = escolha;
-    reveladas[linha - 1][coluna - 1] = 1;
+    
+    matriz[linha-1][coluna-1] = jogadorAtual;
+    reveladas[linha-1][coluna-1] = 1;
+    jogadas++;
     
       for (int i =0; i<3; i++){
         cout << "\n";
             for (int j=0; j<3; j++){
                 cout << "|" << matriz [i][j]<< "|";
             }
-    }
+    } cout<< endl;
     
-    if (matriz[0][0] == 'X' && matriz[0][1]== 'X' && matriz[0][2] == 'X'){
-        cout << "\n\nJogador X é o vencedor\n";
-        break;
-    }
-    
-    for (int i =0; i<3; i++){
-        for (int j =0; j <3; j ++){
-            if(reveladas[i][j] == 0) {
-                jogoEncerrou == false;
+        for (int i = 0; i<3; i++){ // linhas
+            if (matriz[i][0] == jogadorAtual && 
+                matriz[i][1] == jogadorAtual && 
+                matriz[i][2] == jogadorAtual){
+                venceu = true;
+                
+                
             }
         }
-    }
-    
-    }
         
+        for (int j = 0; j<3; j++){ // colunas
+            if (matriz[0][j] == jogadorAtual && 
+                matriz[1][j] == jogadorAtual && 
+                matriz[2][j] == jogadorAtual){
+                venceu = true;
+                
+                
+            }
+        }
+        
+        if (matriz[0][0]==jogadorAtual && matriz[1][1]== jogadorAtual && matriz [2][2]==jogadorAtual){
+            venceu = true;
+            
+            
+        }
+        if (matriz[2][0]==jogadorAtual && matriz[1][1]== jogadorAtual && matriz [0][2]==jogadorAtual){
+            venceu = true;
+            
+            
+        }
+        
+        if(!venceu) {
+            if (jogadorAtual == 'X'){
+                jogadorAtual = 'O';
+            } else
+            jogadorAtual = 'X';
+        }
+        
+    }
     
         cout << "\nAcabou o jogo" << endl;
         for (int i =0; i<3; i++){
-        cout << "\n";
+            cout << "\n";
             for (int j=0; j<3; j++){
                 cout << "|" << matriz [i][j]<< "|";
             }
         }
+        cout << "\nJogador " <<jogadorAtual<<" foi o GRANDE VENCEDOR!" <<endl;
         exit(EXIT_SUCCESS);
+        return 0;
+    }
+        
+
     
     
     
@@ -107,6 +141,3 @@ int main()
         
            */
     
-
-    return 0;
-}
