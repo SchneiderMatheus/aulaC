@@ -20,9 +20,9 @@ int main()
                          {' ',' ',' '},
                          {' ',' ',' '}};
     
-    int reveladas [3][3] ={ {'0','0','0'},
-                         {'0','0','0'},
-                         {'0','0','0'}};
+    int reveladas [3][3] ={ {0,0,0},
+                         {0,0,0},
+                         {0,0,0}};
 
     
     bool jogoEncerrou =  true;
@@ -37,6 +37,7 @@ int main()
     cout << "Coordenadas: " <<linha <<"x" << coluna << endl;
     cout << "Escolha X ou O: ";
     cin >> escolha;
+    escolha = toupper(escolha);
     matriz[linha - 1][coluna - 1] = escolha;
     reveladas[linha - 1][coluna - 1] = 1;
     
@@ -47,6 +48,11 @@ int main()
             }
     }
     
+    if (matriz[0][0] == 'X' && matriz[0][1]== 'X' && matriz[0][2] == 'X'){
+        cout << "\n\nJogador X é o vencedor\n";
+        break;
+    }
+    
     for (int i =0; i<3; i++){
         for (int j =0; j <3; j ++){
             if(reveladas[i][j] == 0) {
@@ -55,11 +61,7 @@ int main()
         }
     }
     
-    if (matriz[1][0] == 'x' && matriz[1][1]== 'x' && matriz[1][2] == 'x'){
-        cout << "Jogador X é o vencedor\n";
     }
-
-    } 
         
     
         cout << "\nAcabou o jogo" << endl;
