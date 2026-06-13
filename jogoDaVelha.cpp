@@ -55,7 +55,11 @@ int main()
         }
     }
     
+    if (matriz[1][0] == 'x' && matriz[1][1]== 'x' && matriz[1][2] == 'x'){
+        cout << "Jogador X é o vencedor\n";
     }
+
+    } 
         
     
         cout << "\nAcabou o jogo" << endl;
