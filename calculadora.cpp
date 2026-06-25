@@ -62,4 +62,23 @@ int main()
     cout << "Resultado do sua operação é: " <<resultado <<endl;
 
     return 0;
+
+
+
+    void exibirMensagem() {
+    cout << "Bem-vindo ao sistema em C++!" << endl;
+}
+
+void apresentarSoma(int numero1, int numero2) {
+    int soma = numero1 + numero2;
+    cout << "A soma de " << numero1 << " + " << numero2 << " é: " << soma << endl;
+}
+
+int retornarMaior(int a, int b) {
+    if (a > b) {
+        return a;  
+    } else {
+        return b;  
+    }
+}
 }
